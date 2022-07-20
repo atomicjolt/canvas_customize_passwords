@@ -1,0 +1,39 @@
+<!--
+Copyright (C) 2022 Atomic Jolt
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<%= fields_for :settings, OpenObject.new(settings) do |f| %>
+  <table style="width: 500px;" class="formtable">
+    <tr>
+      <td colspan="2">
+        <%= mt :description, "Specify custom password requirements" %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= f.blabel :max_repeats, en: "Max Repeats" %></td>
+      <td><%= f.text_field :max_repeats %></td>
+    </tr>
+    <tr>
+      <td><%= f.blabel :max_sequence, en: "Max Sequence" %></td>
+      <td><%= f.text_field :max_sequence %></td>
+    </tr>
+    <tr>
+      <td><%= f.blabel :disallow_common_passwords, en: "Disallow Common Passwords" %></td>
+      <td><%= f.check_box :disallow_common_passwords %></td>
+    </tr>
+    <tr>
+      <td><%= f.blabel :min_length, en: "Min Length" %></td>
+      <td><%= f.text_field :min_length %></td>
+    </tr>
+  </table>
+<% end %>

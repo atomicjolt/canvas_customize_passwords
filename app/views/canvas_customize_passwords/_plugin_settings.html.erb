@@ -32,6 +32,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <td><%= f.check_box :disallow_common_passwords %></td>
     </tr>
     <tr>
+      <td><%= f.blabel :enforce_password_composition_rules, en: "Enforce Password Composition Rules" %></td>
+      <td><%= f.check_box :enforce_password_composition_rules %></td>
+    </tr>
+    <tr>
       <td><%= f.blabel :min_length, en: "Min Length" %></td>
       <td><%= f.text_field :min_length %></td>
     </tr>

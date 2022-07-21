@@ -25,8 +25,8 @@ module CanvasCustomizePasswords
       Canvas::Plugin.register(
         :canvas_customize_passwords,
         nil,
-        name: -> { I18n.t(:canvas_fips_name, NAME) },
-        display_name: -> { I18n.t :canvas_fips_display, DISPLAY_NAME },
+        name: -> { I18n.t(:canvas_customize_passwords_name, NAME) },
+        display_name: -> { I18n.t :canvas_customize_passwords_display, DISPLAY_NAME },
         author: "Atomic Jolt",
         author_website: "http://www.atomicjolt.com/",
         description: -> { t(:description, DESCRIPTION) },

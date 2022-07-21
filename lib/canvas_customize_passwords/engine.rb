@@ -54,7 +54,7 @@ module CanvasCustomizePasswords
         Canvas::PasswordPolicy.define_singleton_method :validate_original, &Canvas::PasswordPolicy.method(:validate)
 
         Canvas::PasswordPolicy.define_singleton_method :validate do |record, attr, value|
-          CanvasCustomizePasswords::PasswordPolicy.validate(record, attr, value)
+          CanvasExtensions::PasswordPolicy.validate(record, attr, value)
           validate_original(record, attr, value)
         end
 

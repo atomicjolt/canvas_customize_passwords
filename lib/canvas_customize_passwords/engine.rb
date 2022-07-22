@@ -15,7 +15,7 @@
 
 module CanvasCustomizePasswords
   NAME = "Canvas Customize Passwords".freeze
-  DISPLAY_NAME = "Enables custom password requirements".freeze
+  DISPLAY_NAME = "Canvas Customize Passwords".freeze
   DESCRIPTION = "Enables custom password requirements".freeze
 
   class Engine < ::Rails::Engine

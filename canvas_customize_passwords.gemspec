@@ -5,7 +5,7 @@ require 'canvas_customize_passwords/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "canvas_customize_passwords"
-  spec.version       = CanvasCustomizePasswords::VERSION
+  spec.version       = CanvasCustomizePasswords::Version
   spec.authors       = ["James Carbine"]
   spec.email         = ["james.carbine@atomicjolt.com"]
 

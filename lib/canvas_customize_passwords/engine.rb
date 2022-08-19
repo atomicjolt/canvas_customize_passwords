@@ -30,7 +30,7 @@ module CanvasCustomizePasswords
         author: "Atomic Jolt",
         author_website: "http://www.atomicjolt.com/",
         description: -> { t(:description, DESCRIPTION) },
-        version: CanvasCustomizePasswords::VERSION,
+        version: CanvasCustomizePasswords::Version,
         settings_partial: 'canvas_customize_passwords/plugin_settings'
       )
 

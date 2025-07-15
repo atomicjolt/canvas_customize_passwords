@@ -31,7 +31,14 @@ module CanvasCustomizePasswords
         author_website: "http://www.atomicjolt.com/",
         description: -> { t(:description, DESCRIPTION) },
         version: CanvasCustomizePasswords::Version,
-        settings_partial: 'canvas_customize_passwords/plugin_settings'
+        settings_partial: 'canvas_customize_passwords/plugin_settings',
+        settings: {
+          min_length: 12,
+          max_repeats: 2,
+          max_sequence: 3,
+          disallow_common_passwords: 1,
+          enforce_password_composition_rules: 1
+        }
       )
 
       if ActiveRecord::Base.connection.table_exists?('plugin_settings') && Canvas::Plugin.find(:canvas_customize_passwords).enabled?

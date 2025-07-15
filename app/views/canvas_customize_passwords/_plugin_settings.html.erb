@@ -1,5 +1,5 @@
 <!--
-Copyright (C) 2022 Atomic Jolt
+Copyright (C) 2025 Atomic Jolt
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -29,11 +29,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </tr>
     <tr>
       <td><%= f.blabel :disallow_common_passwords, en: "Disallow Common Passwords" %></td>
-      <td><%= f.check_box :disallow_common_passwords, value: settings[:disallow_common_passwords] %></td>
+      <td><%= f.check_box :disallow_common_passwords, checked: Canvas::Plugin.value_to_boolean(settings[:disallow_common_passwords]) %></td>
     </tr>
     <tr>
       <td><%= f.blabel :enforce_password_composition_rules, en: "Enforce Password Composition Rules" %></td>
-      <td><%= f.check_box :enforce_password_composition_rules, value: settings[:enforce_password_composition_rules] %></td>
+      <td><%= f.check_box :enforce_password_composition_rules, checked: Canvas::Plugin.value_to_boolean(settings[:enforce_password_composition_rules]) %></td>
     </tr>
     <tr>
       <td><%= f.blabel :min_length, en: "Min Length" %></td>

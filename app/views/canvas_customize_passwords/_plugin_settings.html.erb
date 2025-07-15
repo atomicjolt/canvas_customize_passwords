@@ -21,23 +21,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </tr>
     <tr>
       <td><%= f.blabel :max_repeats, en: "Max Repeats" %></td>
-      <td><%= f.text_field :max_repeats %></td>
+      <td><%= f.text_field :max_repeats, value: settings[:max_repeats] %></td>
     </tr>
     <tr>
       <td><%= f.blabel :max_sequence, en: "Max Sequence" %></td>
-      <td><%= f.text_field :max_sequence %></td>
+      <td><%= f.text_field :max_sequence, value: settings[:max_sequence] %></td>
     </tr>
     <tr>
       <td><%= f.blabel :disallow_common_passwords, en: "Disallow Common Passwords" %></td>
-      <td><%= f.check_box :disallow_common_passwords %></td>
+      <td><%= f.check_box :disallow_common_passwords, value: settings[:disallow_common_passwords] %></td>
     </tr>
     <tr>
       <td><%= f.blabel :enforce_password_composition_rules, en: "Enforce Password Composition Rules" %></td>
-      <td><%= f.check_box :enforce_password_composition_rules %></td>
+      <td><%= f.check_box :enforce_password_composition_rules, value: settings[:enforce_password_composition_rules] %></td>
     </tr>
     <tr>
       <td><%= f.blabel :min_length, en: "Min Length" %></td>
-      <td><%= f.text_field :min_length %></td>
+      <td><%= f.text_field :min_length, value: settings[:min_length] %></td>
     </tr>
   </table>
 <% end %>

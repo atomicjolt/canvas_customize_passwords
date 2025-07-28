@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright (C) 2022 Atomic Jolt
 
 # This program is free software: you can redistribute it and/or modify
@@ -14,9 +16,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 module CanvasCustomizePasswords
-  NAME = "Canvas Customize Passwords".freeze
-  DISPLAY_NAME = "Canvas Customize Passwords".freeze
-  DESCRIPTION = "Enables custom password requirements".freeze
+  NAME = "Canvas Customize Passwords"
+  DISPLAY_NAME = "Canvas Customize Passwords"
+  DESCRIPTION = "Enables custom password requirements"
 
   class Engine < ::Rails::Engine
     config.paths["lib"].eager_load!
@@ -31,23 +33,30 @@ module CanvasCustomizePasswords
         author_website: "http://www.atomicjolt.com/",
         description: -> { t(:description, DESCRIPTION) },
         version: CanvasCustomizePasswords::Version,
-        settings_partial: 'canvas_customize_passwords/plugin_settings'
+        settings_partial: "canvas_customize_passwords/plugin_settings",
+        settings: {
+          min_length: 12,
+          max_repeats: 2,
+          max_sequence: 3,
+          disallow_common_passwords: true,
+          enforce_password_composition_rules: true
+        }
       )
 
-      if ActiveRecord::Base.connection.table_exists?('plugin_settings') && Canvas::Plugin.find(:canvas_customize_passwords).enabled?
+      if ActiveRecord::Base.connection.table_exists?("plugin_settings") && Canvas::Plugin.find(:canvas_customize_passwords).enabled?
         Canvas::PasswordPolicy.define_singleton_method :default_policy do
           @plugin ||= PluginSetting.find_by(name: "canvas_customize_passwords")
           min_length = @plugin.settings[:min_length].present? ? @plugin.settings[:min_length].to_i : 12
           max_repeats = @plugin.settings[:max_repeats].present? ? @plugin.settings[:max_repeats].to_i : 2
           max_sequence = @plugin.settings[:max_sequence].present? ? @plugin.settings[:max_sequence].to_i : 3
-          disallow_common_passwords = @plugin.settings[:disallow_common_passwords].to_i == 1
-          enforce_password_composition_rules = @plugin.settings[:enforce_password_composition_rules].to_i == 1
+          disallow_common_passwords = @plugin.settings[:disallow_common_passwords]
+          enforce_password_composition_rules = @plugin.settings[:enforce_password_composition_rules]
           {
-            :max_repeats => max_repeats,
-            :max_sequence => max_sequence,
-            :disallow_common_passwords => disallow_common_passwords,
-            :min_length => min_length,
-            :enforce_password_composition_rules => enforce_password_composition_rules,
+            max_repeats:,
+            max_sequence:,
+            disallow_common_passwords:,
+            min_length:,
+            enforce_password_composition_rules:,
           }
         end
 
@@ -58,10 +67,9 @@ module CanvasCustomizePasswords
           validate_original(record, attr, value)
         end
 
-        message_path = File.join(Rails.root.to_s, 'gems', 'plugins', 'canvas_customize_passwords', 'messages')
+        message_path = Rails.root.join("gems/plugins/canvas_customize_passwords/messages").to_s
         Canvas::MessageHelper.add_message_path(message_path)
       end
-
     end
   end
 end

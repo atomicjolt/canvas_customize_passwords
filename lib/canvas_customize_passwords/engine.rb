@@ -44,7 +44,7 @@ module CanvasCustomizePasswords
       )
 
       if ActiveRecord::Base.connection.table_exists?("plugin_settings") && Canvas::Plugin.find(:canvas_customize_passwords).enabled?
-        Canvas::PasswordPolicy.define_singleton_method :default_policy do
+        Canvas::Security::PasswordPolicy.define_singleton_method :default_policy do
           @plugin ||= PluginSetting.find_by(name: "canvas_customize_passwords")
           min_length = @plugin.settings[:min_length].present? ? @plugin.settings[:min_length].to_i : 12
           max_repeats = @plugin.settings[:max_repeats].present? ? @plugin.settings[:max_repeats].to_i : 2
@@ -60,9 +60,9 @@ module CanvasCustomizePasswords
           }
         end
 
-        Canvas::PasswordPolicy.define_singleton_method :validate_original, &Canvas::PasswordPolicy.method(:validate)
+        Canvas::Security::PasswordPolicy.define_singleton_method :validate_original, &Canvas::Security::PasswordPolicy.method(:validate)
 
-        Canvas::PasswordPolicy.define_singleton_method :validate do |record, attr, value|
+        Canvas::Security::PasswordPolicy.define_singleton_method :validate do |record, attr, value|
           CanvasExtensions::PasswordPolicy.validate(record, attr, value)
           validate_original(record, attr, value)
         end
